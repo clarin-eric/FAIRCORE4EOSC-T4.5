@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v3.5 NT (http://www.xmlspy.com) by Daan Broeder (Max-Planck Institute for Psycholinguistics) -->
+<schema targetNamespace="http://www.mpi.nl/IMDI/Schema/IMDI.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:imdi="http://www.mpi.nl/IMDI/Schema/IMDI.xsd" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1">
+    <xs:element name="METATRANSCRIPT">
+        <xs:annotation>
+            <xs:documentation>The outer element with administrative data of all metadata description files. Version 1.0 is based on Session description version 2.5 and Catalogue description 2.1</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="false">
+            <xs:choice>
+                <xs:element name="Session" type="imdi:SessionType" maxOccurs="unbounded"/>
+                <xs:element name="Corpus" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Content specification for CORPUS has yet to be finished</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:complexContent>
+                            <xs:extension base="imdi:CorpusType"/>
+                        </xs:complexContent>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="Catalogue" type="imdi:CatalogueType"/>
+            </xs:choice>
+            <xs:attribute name="Date" type="xs:date" use="required"/>
+            <xs:attribute name="Originator" type="xs:string" use="optional"/>
+            <xs:attribute name="Version" type="xs:string" use="required"/>
+            <xs:attribute name="FormatId" type="xs:string" use="fixed" value="IMDI 1.2"/>
+            <xs:attribute name="History" type="xs:uriReference" use="optional"/>
+            <xs:attribute name="Type" type="imdi:MetatranscriptType" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="DescriptionType" block="extension" mixed="false">
+        <xs:annotation>
+            <xs:documentation>Human readable description in the form of a text with language id specification and/or a link to a file with a description and  language id specification</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="LanguageId" type="imdi:LanguageIdType" use="optional"/>
+                <xs:attribute name="Link" type="xs:uriReference" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ContactType">
+        <xs:annotation>
+            <xs:documentation>Contact information for this data</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string" minOccurs="0"/>
+            <xs:element name="Address" type="xs:string" minOccurs="0"/>
+            <xs:element name="Email" type="xs:string" minOccurs="0"/>
+            <xs:element name="Organisation" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="LocationType">
+        <xs:annotation>
+            <xs:documentation>Information on creation location for this data</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Continent" type="imdi:Vocabulary">
+                <xs:annotation>
+                    <xs:documentation>The continent where the session/corpus was recorded or originated</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Country" type="imdi:Vocabulary">
+                <xs:annotation>
+                    <xs:documentation>The country where the session/corpus was recorded or originated</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Region" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The region or sub-region where the session/corpus was recorded or originated</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Address" type="xs:string" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>The address where the session/corpus was recorded or originated</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="Keys">
+        <xs:annotation>
+            <xs:documentation>List of a number of key name value pairs. Should be used to add information that is not covered by other metadata elements at this level</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="false">
+            <xs:sequence>
+                <xs:element name="Key" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="imdi:Vocabulary">
+                                <xs:attribute name="Name" type="xs:string" use="required"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Language">
+        <xs:annotation>
+            <xs:documentation>A list of languages used in the session</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="false">
+            <xs:sequence>
+                <xs:element name="Id" type="imdi:LanguageIdType" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Unique code to identify a language</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Name" type="xs:string" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>A list of human understandable names to identify a language</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element name="Description" type="imdi:DescriptionType" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Description for this particular language.</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="AccessType">
+        <xs:annotation>
+            <xs:documentation>Groups information about access rights for this data</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Availability" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Availability of the data. OpenCV</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Date" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>Date when access rights were evaluated</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Owner" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Name of owner resource</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Publisher" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Publisher responsible for distribution of this data</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Contact" type="imdi:ContactType"/>
+            <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ProjectType">
+        <xs:annotation>
+            <xs:documentation>Project Information</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>A short name or abbreviation for the project</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Title" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The full title of the project</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Id" type="imdi:DescriptionType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>A unique identifier for the project</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Contact" type="imdi:ContactType">
+                <xs:annotation>
+                    <xs:documentation>Contact information for this project</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Description for this project</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="CounterPosition">
+        <xs:annotation>
+            <xs:documentation>Position (start (+end) ) on a oldfashioned tape without time indication</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="false">
+            <xs:attribute name="Start" type="imdi:CounterPositionType" use="required"/>
+            <xs:attribute name="End" type="imdi:CounterPositionType" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="TimePosition">
+        <xs:annotation>
+            <xs:documentation>Position in a media file or modern tape</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="false">
+            <xs:attribute name="Start" type="imdi:TimePositionType" use="required"/>
+            <xs:attribute name="End" type="imdi:TimePositionType" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Languages">
+        <xs:annotation>
+            <xs:documentation>Groups information about the languages used in the session</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="false">
+            <xs:sequence>
+                <xs:element name="Description" type="imdi:DescriptionType" minOccurs="0" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Description for the list of languages spoken by this participant</xs:documentation>
+                    </xs:annotation>
+                </xs:element>
+                <xs:element ref="imdi:Language" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="LanguageIdType">
+        <xs:annotation>
+            <xs:documentation>Language identification either ISO or SIL</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="ISO639(-1|-2)?:.*"/>
+            <xs:pattern value="RFC1766:.*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TimePositionType">
+        <xs:annotation>
+            <xs:documentation>Time position in the hh:mm:ss:ff format</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9][0-9]:[0-9][0-9]:[0-9][0-9]:[0-9]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CounterPositionType">
+        <xs:annotation>
+            <xs:documentation>Counter position in the  nnn format</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:positiveInteger">
+            <xs:pattern value="[0-9]*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VocabularyType">
+        <xs:annotation>
+            <xs:documentation>specifies the four vocabulary types</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ClosedVocabulary"/>
+            <xs:enumeration value="ClosedVocabularyList"/>
+            <xs:enumeration value="OpenVocabulary"/>
+            <xs:enumeration value="OpenVocabularyList"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VocabularyRefType">
+        <xs:annotation>
+            <xs:documentation>Pointer to a vocabulary definition</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:uriReference"/>
+    </xs:simpleType>
+    <xs:complexType name="Vocabulary">
+        <xs:annotation>
+            <xs:documentation>value for an element/attribute that is a vocabulary</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="imdi:CVSstring">
+                <xs:attribute name="Type" type="imdi:VocabularyType" use="default" value="OpenVocabularyList"/>
+                <xs:attribute name="DefaultLink" type="imdi:VocabularyRefType" use="optional"/>
+                <xs:attribute name="Link" type="imdi:VocabularyRefType" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="AgeType">
+        <xs:annotation>
+            <xs:documentation>Specifies age of a person with differerent counting methods</xs:documentation>
+        </xs:annotation>
+        <xs:simpleContent>
+            <xs:extension base="imdi:AgeValueType">
+                <xs:attribute name="AgeCountingMethod" type="imdi:AgeCountingMethodType" use="default" value="SinceBirth"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="AgeCountingMethodType">
+        <xs:annotation>
+            <xs:documentation>The counting method</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SinceConception"/>
+            <xs:enumeration value="SinceBirth"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="AgeValueType">
+        <xs:annotation>
+            <xs:documentation>The age of a person</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="([0-9]+)*(;[0-9]+)*(;[0-9]+)*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="VocabularyDefType" mixed="false">
+        <xs:annotation>
+            <xs:documentation>The definition of a vocabulary. Attributes: Date of creattion, Link to origin. Contails a Description be element to describe the domain of the vocabularyand a (unspecified) number of value enries</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded"/>
+            <xs:element name="Entry" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="Value" type="xs:string" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="Name" type="xs:string" use="required"/>
+        <xs:attribute name="Date" type="xs:date" use="required"/>
+        <xs:attribute name="Link" type="imdi:VocabularyRefType" use="required"/>
+    </xs:complexType>
+    <xs:element name="VocabularyDef" type="imdi:VocabularyDefType">
+        <xs:annotation>
+            <xs:documentation>Instantiation of a VocabularyDefType</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:simpleType name="CVSstring">
+        <xs:annotation>
+            <xs:documentation>Comma seperated string</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[^,]+(,[^,]+)*"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="MDGroupType">
+        <xs:annotation>
+            <xs:documentation>Type for group of metadata pertaining to a session</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Location" type="imdi:LocationType">
+                <xs:annotation>
+                    <xs:documentation>Groups information about the location where the session was created</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded"/>
+            <xs:element ref="imdi:Keys"/>
+            <xs:element name="Project" type="imdi:ProjectType">
+                <xs:annotation>
+                    <xs:documentation>Groups information about the project for which the session was (originally) created</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Collector">
+                <xs:annotation>
+                    <xs:documentation>Groups information about the collector of the session. This is the person responsible for the collection of the sesion data.</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Name" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>The name of the person  responsible for creating the session</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Contact" type="imdi:ContactType">
+                            <xs:annotation>
+                                <xs:documentation>Contact information for this collector</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Description for this collector</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Content">
+                <xs:annotation>
+                    <xs:documentation>Groups information about the content of the session. The content description takes place in several (overlapping) dimensions</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Task" type="imdi:Vocabulary">
+                            <xs:annotation>
+                                <xs:documentation>List of he major tasks carried out in the session. OVList</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Modalities" type="imdi:Vocabulary">
+                            <xs:annotation>
+                                <xs:documentation>List of modalities used in the session. OVList</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="CommunicationContext">
+                            <xs:annotation>
+                                <xs:documentation>This groups information concerning the context of communication</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Interactivity" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>degree of interactivity. CCV</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="PlanningType" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>Degree of planning of the event. CCV</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Involvement" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>Degree of involvement of the researcher. CCV</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Genre">
+                            <xs:annotation>
+                                <xs:documentation>Groups information of the conventionalised discourse types of the session content</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Interactional" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>Lists the interactional genres of the session content. OVList</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Discursive" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>Lists the discursive  genres of the session content. OVList</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Performance" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>Lists the performance genres of the session content. OVList</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element ref="imdi:Languages"/>
+                        <xs:element ref="imdi:Keys"/>
+                        <xs:element name="Description" type="imdi:DescriptionType" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Description for the content of this session</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Participants">
+                <xs:annotation>
+                    <xs:documentation>Groups information about all participants in the session</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Description" type="imdi:DescriptionType" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Description pertaining to all the participants together</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="Participant" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Type" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>Type or functional role of participant e.g. consultant, contributor, interviewer, researcher. OV</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Name" type="xs:string" maxOccurs="unbounded">
+                                        <xs:annotation>
+                                            <xs:documentation>Name of the participant as used by others in the transcription</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="FullName" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>Official name of the participant</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Code" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>Short unique code to identify the participant as used in the transcriptor in the transcription </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Role" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>The role of the participant in the session within the context of informant. OVList</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element ref="imdi:Languages"/>
+                                    <xs:element name="EthnicGroup" type="imdi:CVSstring">
+                                        <xs:annotation>
+                                            <xs:documentation>List of ethnic groups of participant. OVList</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Age" type="imdi:AgeType">
+                                        <xs:annotation>
+                                            <xs:documentation>Age of the participant in CHAT format yy;mm.dd</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Sex">
+                                        <xs:annotation>
+                                            <xs:documentation>Sex of the participant. CV</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:string">
+                                                <xs:enumeration value="Male"/>
+                                                <xs:enumeration value="Female"/>
+                                                <xs:enumeration value="Unknown"/>
+                                                <xs:enumeration value="Undefined"/>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:element>
+                                    <xs:element name="Education" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>The eduucation of the participant. Can slo be used to specify litteracy</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Anonymous" type="xs:boolean">
+                                        <xs:annotation>
+                                            <xs:documentation>Indicated if true names were used or that codes were employed. CV  boolean</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element ref="imdi:Keys"/>
+                                    <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded">
+                                        <xs:annotation>
+                                            <xs:documentation>Description for this individual participant</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="References" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Groups information about external documentation associated with this session</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Description" type="imdi:DescriptionType" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Every description is a reference</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="CorpusType">
+        <xs:annotation>
+            <xs:documentation>Type for a corpus that points to either other corpora or sessions</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>name of the (sub-)corpus</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Title" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Title for the (sub-)corpus</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MDGroup" type="imdi:MDGroupType"/>
+            <xs:element name="CorpusLink" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>link to other metadata description file either Corpus or Session. Attribute name is for the benefit of browsing</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:uriReference">
+                            <xs:attribute name="Name" type="xs:string" use="required"/>
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="CatalogueLink" type="xs:uriReference" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="CatalogueType">
+        <xs:annotation>
+            <xs:documentation>Type for group metadata pertaining to published corpora</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Title" type="xs:string"/>
+            <xs:element name="Id" type="xs:string" maxOccurs="unbounded"/>
+            <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded"/>
+            <xs:element name="Language" type="imdi:LanguageIdType">
+                <xs:annotation>
+                    <xs:documentation>Language the corpus is described/annotated in</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="SubjectLanguage" type="imdi:LanguageIdType">
+                <xs:annotation>
+                    <xs:documentation>Language the corpus is about</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Location" type="imdi:LocationType"/>
+            <xs:element name="ContentType" type="imdi:Vocabulary"/>
+            <xs:element name="Format">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="Text">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element ref="imdi:Keys"/>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Audio">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element ref="imdi:Keys"/>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Video">
+                            <xs:complexType>
+                                <xs:all>
+                                    <xs:element ref="imdi:Keys"/>
+                                </xs:all>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Quality">
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="Audio" type="imdi:QualityType"/>
+                        <xs:element name="Video" type="imdi:QualityType"/>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SmallestAnnotationUnit" type="imdi:Vocabulary"/>
+            <xs:element name="Applications" type="imdi:Vocabulary"/>
+            <xs:element name="Date" type="xs:date"/>
+            <xs:element name="Project" type="imdi:ProjectType"/>
+            <xs:element name="Publisher" type="xs:string"/>
+            <xs:element name="Authors" type="imdi:CVSstring"/>
+            <xs:element name="Size" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>Human readabusle string that indicates total size of corpus</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DistributionForm" type="imdi:Vocabulary"/>
+            <xs:element name="Access" type="imdi:AccessType"/>
+            <xs:element name="Pricing" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="MetatranscriptType">
+        <xs:annotation>
+            <xs:documentation>Defines the different types of metatadata descriptions</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SESSION"/>
+            <xs:enumeration value="CATALOGUE"/>
+            <xs:enumeration value="CORPUS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="QualityType">
+        <xs:annotation>
+            <xs:documentation>Quality specification scale [1-5]</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="SessionType">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>A short name to identify the session</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Title" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The complete title of the session without abbrevations</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Date" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>The date when the primary  data of the session was created in ISO8601 format</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="MDGroup" type="imdi:MDGroupType"/>
+            <xs:element name="Resources">
+                <xs:annotation>
+                    <xs:documentation>Groups information of language resources connected to the session</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:all>
+                        <xs:element name="MediaFile" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Groups information about the media file</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="ResourceLink" type="xs:uriReference">
+                                        <xs:annotation>
+                                            <xs:documentation>URL to media file</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Size" type="xs:unsignedLong">
+                                        <xs:annotation>
+                                            <xs:documentation>Size of media file </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Type" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>Major part of mime-type</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Format" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>Minor part of mime-type</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Quality" type="imdi:QualityType">
+                                        <xs:annotation>
+                                            <xs:documentation>Quality of the recording scale [1-5]</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="RecordingConditions" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>describes technical conditions of recording</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element ref="imdi:TimePosition"/>
+                                    <xs:element name="Access" type="imdi:AccessType"/>
+                                    <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="AnnotationUnit" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Groups information about an annotation unit. An annotation unit is refers to one layer of annotation or transcription. This is independent of wheter these are contained in one or more files.</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="ResourceLink" type="xs:uriReference">
+                                        <xs:annotation>
+                                            <xs:documentation>URL to file containing the annotations/transcription</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="MediaResourceLink" type="xs:uriReference">
+                                        <xs:annotation>
+                                            <xs:documentation>URL to media file from which the annotations/transcriptions originate</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Annotator" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>Name of the person who did the annotation or transcription</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Date" type="xs:date">
+                                        <xs:annotation>
+                                            <xs:documentation>Date when unit was created</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Type" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>The type of the annotation unit. OV</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Format">
+                                        <xs:annotation>
+                                            <xs:documentation>File format used for annotation/transcription </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="ContentEncoding">
+                                        <xs:annotation>
+                                            <xs:documentation>Name of encoding scheme used for the annotation purpose</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="CharacterEncoding">
+                                        <xs:annotation>
+                                            <xs:documentation>Character encoding used in the annotation unit </xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Access" type="imdi:AccessType"/>
+                                    <xs:element name="LanguageId" type="imdi:LanguageIdType">
+                                        <xs:annotation>
+                                            <xs:documentation>Language used for annotating/transcribing</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Anonymous" type="xs:boolean">
+                                        <xs:annotation>
+                                            <xs:documentation>Indicates if data has been anonymised. CV boolean</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="AnonymousInfo" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>Groups data about name conversions for persons who are anonymised </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="ResourceLink" type="xs:uriReference">
+                                        <xs:annotation>
+                                            <xs:documentation>URL to information to convert pseudo named to real-names</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Access" type="imdi:AccessType"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="Source" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Groups information about the source; e.g. media-carrier, book, newspaper archive etc.</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element name="Id" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>Short unique code to identify source</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Format" type="imdi:Vocabulary">
+                                        <xs:annotation>
+                                            <xs:documentation>Physical storage format. OV</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:element name="Quality" type="imdi:QualityType">
+                                        <xs:annotation>
+                                            <xs:documentation>Quality of recorded data. Scale [1-5]</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                    <xs:choice>
+                                        <xs:element ref="imdi:CounterPosition"/>
+                                        <xs:element ref="imdi:TimePosition"/>
+                                    </xs:choice>
+                                    <xs:element name="Access" type="imdi:AccessType"/>
+                                    <xs:element name="Description" type="imdi:DescriptionType" maxOccurs="unbounded">
+                                        <xs:annotation>
+                                            <xs:documentation>Description for this source</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:element>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:all>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="References" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>Groups information about external documentation associated with this session</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Description" type="imdi:DescriptionType" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Every description is a reference</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+</schema>
