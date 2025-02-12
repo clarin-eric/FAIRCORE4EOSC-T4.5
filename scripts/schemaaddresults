@@ -1,0 +1,32 @@
+ABCD, XSD, https://abcd.tdwg.org/xml/ABCD_3.0.xsd --> 	DRAFT			mscr:schema:96a4be2f-6123-424f-ad49-ac8ee8181073
+ABCD-Zoology, XSD, https://abcd.tdwg.org/xml/ABCD_3.0_zoology.xsd --> 	DRAFT			mscr:schema:e24c1c09-924f-478a-b050-a5539bb5af80
+BIDS2, JSONSCHEMA, https://raw.githubusercontent.com/bids-standard/bids-stats-model-schema/master/schema.json --> Bad Request	400		500 INTERNAL_SERVER_ERROR "Error occured while ingesting file based schema description. Validation failed. JSON schema http://json-schema.org/draft-07/schema# is not supported. Supported schemas are: http://json-schema.org/draft-04/schema#"	
+CMDI, XSD, https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1404130561238/xsd --> 	DRAFT			mscr:schema:24fa3ab0-e9fa-4d0f-b95a-6d226178c825
+DDI-2-1, XSD, https://ddialliance.org/Specification/DDI-Codebook/2.1/XMLSchema/Version2-1.xsd --> 	500	Internal Server Error		
+DDI-2.5, XSD, https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd --> 	DRAFT			mscr:schema:b9e0f000-eab9-4924-8266-6f6314945da1
+DWC, XSD, http://rs.tdwg.org/dwc/xsd/tdwg_dwc_classes.xsd --> Internal Server Error	500		Error occured while ingesting file based schema description.org.xml.sax.SAXParseException; systemId: http://rs.tdwg.org/dwc/xsd/tdwg_dwc_classes.xsd; lineNumber: 1; columnNumber: 1; Premature end of file.	
+GBIF, XSD, http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml-gbif-profile.xsd --> 	DRAFT			mscr:schema:19634fe7-8811-48e8-84fd-dab1c6ec0b50
+MARC, XSD, https://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd --> 	DRAFT			mscr:schema:127e3fbf-d2d6-4905-b3c6-a16417812370
+MODS, XSD, http://www.loc.gov/standards/mods/v3/mods-3-7.xsd --> 	DRAFT			mscr:schema:70f18d1c-3905-4455-a439-22ea69397520
+MODS2DC XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}MODS2MARC XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}TEI-ALL, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_all.xsd --> 	500	Internal Server Error		
+TEI-CORPUS, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_corpus.xsd --> 	500	Internal Server Error		
+TEI-LITE, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_lite.xsd --> 	500	Internal Server Error		
+No input found: XSD
+DCTERMS, XSD, https://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd --> 	DRAFT			mscr:schema:caa258f1-357c-4a85-8db0-362fb748f50f
+IMDI2-1.1, XSD, ../Schema/IMDIandCMDI/IMDI2-1.1.xsd --> Internal Server Error	500		Error occured while ingesting file based schema description.Could not transform schema file.xsd:complexType element: The simpleContent element and the mixed attribute are not allowed at the same time.	
+IMDI2, XSD, ../Schema/IMDIandCMDI/IMDI2.xsd --> Internal Server Error	500		Error occured while ingesting file based schema description.Could not transform schema file.The attribute use doesn't support the value "fixed".\nThe possible values for the use attribute are:\nrequired, prohibited, optional	
+LinguisticFieldtrip, XSD, ../Schema/IMDIandCMDI/LinguisticFieldtrip.xsd --> 	DRAFT			mscr:schema:fb3c826f-4ffb-49cc-b786-9aea4055b667
+NaLiDa-SpeechCorpus, XSD, https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1527668176128/xsd --> 	DRAFT			mscr:schema:4ddc6e5c-7aff-48fe-9b41-7b82c1b5dc57
+Yoda, JSONSCHEMA, https://yoda.uu.nl/schemas/default-0/metadata.json --> Bad Request	400		500 INTERNAL_SERVER_ERROR "Error occured while ingesting file based schema description. Validation failed. JSON schema http://json-schema.org/draft-07/schema is not supported. Supported schemas are: http://json-schema.org/draft-04/schema#"	
+Dataverse, JSONSCHEMA, ../Schema/Dataverse/demo-10.5072-FK2-PPORT-generated-schema.json --> Bad Request	400		500 INTERNAL_SERVER_ERROR "Error occured while ingesting file based schema description. Validation failed. JSON schema http://json-schema.org/draft-07/schema# is not supported. Supported schemas are: http://json-schema.org/draft-04/schema#"	
+LR-Switchboard, JSONSCHEMA, ../Schema/LRSWitchboard/spec-v2.schema.json --> Bad Request	400		500 INTERNAL_SERVER_ERROR "Error occured while ingesting file based schema description. null"	
+CMDI2OLAC XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}CMDI2DC XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}DIM2DataCite XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}DIM2EZID XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}DIM2MARC21slim XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}MODS-submission XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}DIM2DC-example XSL
+{"type":"about:blank","title":"Bad Request","status":400,"detail":"Required part 'file' is not present.","instance":"/datamodel-api/v2/crosswalkFull"}

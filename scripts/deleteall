@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "delete schema: $1 $2 $3"
+./apideleteschema `./apigetinfo | awk '{ print $1 }'`
+./apideletecrosswalk `./apigetinfo | awk '{ print $1 }'`

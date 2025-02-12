@@ -1,0 +1,22 @@
+ABCD, XSD, https://abcd.tdwg.org/xml/ABCD_3.0.xsd --> 	DRAFT			mscr:schema:161cd30b-408b-47e0-87c8-477a386e6926
+ABCD-Zoology, XSD, https://abcd.tdwg.org/xml/ABCD_3.0_zoology.xsd --> 	DRAFT			mscr:schema:dd4afe96-265e-46b1-a334-5ec4fe118232
+BIDS, JSONSCHEMA, https://bids-specification.readthedocs.io/en/stable/schema.json --> Bad Request	400		500 INTERNAL_SERVER_ERROR "Error occured while ingesting file based schema description. Missing $schema property. Cannot validate schema."	
+CMDI, XSD, https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1404130561238/xsd --> 	DRAFT			mscr:schema:c8c8e73f-3ec7-498f-9ff5-186fa1af03cf
+DDI-2-1, XSD, https://ddialliance.org/Specification/DDI-Codebook/2.1/XMLSchema/Version2-1.xsd --> 	500	Internal Server Error		
+DDI-2.5, XSD, https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd --> 	DRAFT			mscr:schema:2c5e1f40-0ae4-44bf-96c4-72b4624c18d6
+DWC, XSD, http://rs.tdwg.org/dwc/xsd/tdwg_dwc_classes.xsd --> Internal Server Error	500Error occured while ingesting file based schema description.org.xml.sax.SAXParseException; systemId: http://rs.tdwg.org/dwc/xsd/tdwg_dwc_classes.xsd; lineNumber: 1; columnNumber: 1; Premature end of file.	
+GBIF, XSD, http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml-gbif-profile.xsd --> 	DRAFT			mscr:schema:5f8d26f1-2e46-4052-b419-84fd11739e3f
+MARC, XSD, https://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd --> 	DRAFT		mscr:schema:cce8e526-660f-4b2f-a9b6-ec00c083a41b
+MODS, XSD, http://www.loc.gov/standards/mods/v3/mods-3-7.xsd --> 	DRAFT			mscr:schema:2f845b73-b31a-4250-87e1-734372a56af2
+TEI-ALL, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_all.xsd --> 	500Internal Server Error		
+TEI-CORPUS, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_corpus.xsd --> 	500	Internal Server Error		
+TEI-LITE, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_lite.xsd --> 	500Internal Server Error		
+DC, XSD, ../Schema/DC/dc.xsd --> 	DRAFT			mscr:schema:a6471dd1-cb66-45df-af4c-a6fd9e90d47d
+DCTERMS, XSD, ../Schema/DC/dcterms.xsd --> Internal Server Error	500		Error occured while ingesting file based schema description.Could not transform schema file.java.io.FileNotFoundException: /tmp//tmp/dc.xsd	
+DCTERMS, XSD, https://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd --> 	DRAFT		mscr:schema:745703af-9888-41a0-ac97-cac1d951961a
+IMDI2-1.1, XSD, ../Schema/IMDIandCMDI/IMDI2-1.1.xsd --> Internal Server Error	500Error occured while ingesting file based schema description.Could not transform schema file.xsd:complexType element: The simpleContent element and the mixed attribute are not allowed at the same time.	
+IMDI2, XSD, ../Schema/IMDIandCMDI/IMDI2.xsd --> Internal Server Error	500		Error occured while ingesting file based schema description.Could not transform schema file.The attribute use doesn't support the value "fixed".\nThe possible values for the use attribute are:\nrequired, prohibited, optional	
+LinguisticFieldtrip, XSD, ../Schema/IMDIandCMDI/LinguisticFieldtrip.xsd --> 	DRAFT			mscr:schema:fa29aba7-3b94-4296-9d52-155ab0f0c015
+NaLiDa-SpeechCorpus, XSD, https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1527668176128/xsd --> 	DRAFT			mscr:schema:08f065a6-0051-4403-b126-b447259345fd
+grind:scripts broeder$ 
+

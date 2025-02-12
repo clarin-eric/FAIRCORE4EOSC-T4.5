@@ -1,0 +1,14 @@
+#!/bin/sh
+# delete MSCR registered schema
+# e.g. use ./apideleteschema PID1 PID2 PID3
+# e.g. use ./apideleteschema `./apigetinfo | xargs`
+#
+echo DELETE $@
+#NAME=$1
+#BT=`cat token.txt`
+BT=`cat token2.txt`
+for PID do
+echo "deleting $PID"
+curl -Ss -X DELETE https://mscr-test.2.rahtiapp.fi/datamodel-api/v2/schema/$PID --header 'Authorization: Bearer '$BT | jq
+done
+

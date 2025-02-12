@@ -1,0 +1,73 @@
+#
+# use awk '/^[^#]/ $2~ /XSD|JSONSCHEMA/ { print  "./apiaddschema " $1,  $2, $3}' schemalist to generate commandlists #
+
+#RDA metadata standards registr & FAIRSHARING
+#
+ABCD XSD https://abcd.tdwg.org/xml/ABCD_3.0.xsd
+ABCD-Zoology XSD https://abcd.tdwg.org/xml/ABCD_3.0_zoology.xsd
+# not a valid JSON schema BIDS JSONSCHEMA https://bids-specification.readthedocs.io/en/stable/schema.json
+BIDS2 JSONSCHEMA https://raw.githubusercontent.com/bids-standard/bids-stats-model-schema/master/schema.json 
+CMDI XSD https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1404130561238/xsd
+DDI-2-1 XSD https://ddialliance.org/Specification/DDI-Codebook/2.1/XMLSchema/Version2-1.xsd
+DDI-2.5 XSD https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd
+DWC XSD http://rs.tdwg.org/dwc/xsd/tdwg_dwc_classes.xsd
+GBIF XSD http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml-gbif-profile.xsd
+MARC XSD https://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd
+MODS XSD http://www.loc.gov/standards/mods/v3/mods-3-7.xsd
+MODS2DC XSL http://www.loc.gov/standards/mods/v3/DC_MODS3-5_XSLT2-0.xsl
+MODS2MARC XSL http://www.loc.gov/standards/mods/v3/MODS3-5_DC_XSLT2-0.xsl
+TEI-ALL XSD https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_all.xsd
+TEI-CORPUS XSD https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_corpus.xsd
+TEI-LITE XSD https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_lite.xsd
+
+#DC
+DC XSD ../Schema/DC/dc.xsd
+# DCTERMS XSD ../Schema/DC/dcterms.xsd
+DCTERMS XSD https://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd
+
+#CLARIN specific
+IMDI2-1.1 XSD ../Schema/IMDIandCMDI/IMDI2-1.1.xsd
+IMDI2 XSD ../Schema/IMDIandCMDI/IMDI2.xsd
+LinguisticFieldtrip XSD ../Schema/IMDIandCMDI/LinguisticFieldtrip.xsd
+NaLiDa-SpeechCorpus XSD https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1527668176128/xsd
+
+#Tools
+Yoda JSONSCHEMA https://yoda.uu.nl/schemas/default-0/metadata.json
+Dataverse JSONSCHEMA  ../Schema/Dataverse/demo-10.5072-FK2-PPORT-generated-schema.json
+#Oxygenproblem LR-Switchboard JSONSCHEMA https://raw.githubusercontent.com/clarin-eric/switchboard-tool-registry/master/schemas/spec-v2.schema.json
+LR-Switchboard JSONSCHEMA ../Schema/LRSWitchboard/spec-v2.schema.json
+
+
+#MPI crosswalks
+#CMDI2OLAC XSL https://raw.githubusercontent.com/TheLanguageArchive/metadata_xslts/main/cmd2dc-olac/cmd2olac.xsl
+#CMDI2DC XSL https://raw.githubusercontent.com/TheLanguageArchive/metadata_xslts/main/cmd2dc-olac/cmd2dc.xsl
+# at this moment MSCR does not support crosswalk fetch via URI, so download first
+CMDI2OLAC XSL ../Schema/MPI-crosswalks/cmd2olac.xsl
+CMDI2DC XSL ../Schema/MPI-crosswalks/cmd2dc.xsl
+
+
+# UFAL crosswalks
+#DIM2DataCite XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/DIM2DataCite.xsl
+#DIM2EZID XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/DIM2EZID.xsl
+#DIM2MARC21slim XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/DIM2MARC21slim.xsl
+#MODS-submission XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/mods-submission.xsl
+#DIM2DC-example XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/sample-crosswalk-DIM2DC.xsl
+# at this moment MSCR does not support crosswalk fetch via URI, so download first
+DIM2DataCite XSL ../Schema/UFAL-crosswalks/DIM2DataCite.xsl
+DIM2EZID XSL ../Schema/UFAL-crosswalks/DIM2EZID.xsl
+DIM2MARC21slim XSL ../Schema/UFAL-crosswalks/DIM2MARC21slim.xsl
+MODS-submission XSL ../Schema/UFAL-crosswalks/mods-submission.xsl
+DIM2DC-example XSL ../Schema/UFAL-crosswalks/sample-crosswalk-DIM2DC.xsl
+
+# SKOS Vocabularies
+TaDIRAH_original SKOSRDF https://vocabs.dariah.eu/rest/v1/tadirah/data?format=text/turtle
+CSDToolTask SKOSRDF https://vocabs.sshopencloud.eu/browse/rest/v1/csd-tool-tasks/data?format=text/turtle
+#very big! vocabulary , testing performance of a platform
+AGROVOC SKOSRDF  ../Schema/Vocabularies/agrovoc_lod.ttl
+
+#Ontologies / RDF how OWLy may the vocabularies be? eg. the TaDiRAH voocabularu
+Linguistic Ontology RDF https://triplydb.com/none/gold
+
+#RNG, used in TEI world, but do all RNG schema have a XSD alternative?
+EpiDoc Archeology/philology (transcription, in examples metadata in TEIheader) https://github.com/EpiDoc/Source/blob/main/README.md RNG https://epidoc.stoa.org/schema/9.5/tei-epidoc.rng
+

@@ -1,0 +1,18 @@
+#!/bin/sh
+NAME=$1
+TYPE=$2
+FILE=$3
+if [ -r "$FILE" ]
+then SOURCEEXP="file=@$FILE"
+elif [ `echo $FILE | grep '^http'` ]
+then SOURCEEXP="contentURL=$FILE"
+else SOURCEEXP="ILLEGAL SOURCE"
+echo "No input found: $2"
+exit 0
+fi
+#BT=`cat token.txt`
+BT=`cat token2.txt`
+
+echo "$NAME, $TYPE, $FILE --> \c"
+curl -Ss -X PUT 'https://mscr-test.2.rahtiapp.fi/datamodel-api/v2/schemaFull' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: Bearer '$BT --form metadata="{ \"status\": \"DRAFT\", \"state\": \"DRAFT\", \"visibility\": \"PUBLIC\", \"namespace\": \"http://test.com\", \"versionLabel\": \"1\", \"label\": { \"en\": \"$NAME\" }, \"description\": { \"en\": \"string\" } , \"languages\": [\"en\"], \"format\": \"$TYPE\" }" --form $SOURCEEXP | jq -r '[.title, .status, .error, .detail, .pid]|@tsv'
+

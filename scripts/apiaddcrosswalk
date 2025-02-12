@@ -1,0 +1,19 @@
+#!/bin/sh
+echo $1 $2
+NAME=$1
+FORMAT="XSLT"
+FILE=$3
+if [ -r "$FILE" ]
+then SOURCEEXP="file=@$FILE"
+elif [ `echo $FILE | grep '^http'` ]
+then SOURCEEXP="contentURL=$FILE"
+else SOURCEEXP="ILLEGAL SOURCE"
+echo "No input found: $2"
+exit 0
+fi
+#BT=`cat token.txt`
+BT=`cat token2.txt`
+
+#curl -Ss -X PUT 'https://mscr-test.2.rahtiapp.fi/datamodel-api/v2/crosswalkFull' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: Bearer '$BT --form metadata="{ \"status\": \"DRAFT\", \"state\": \"DRAFT\", \"visibility\": \"PUBLIC\", \"namespace\": \"http://test.com\", \"versionLabel\": \"1\", \"label\": { \"en\": \"$NAME\" }, \"description\": { \"en\": \"string\" } , \"languages\": [\"en\"], \"format\": \"$FORMAT\" }" --form $SOURCEEXP 
+curl -Ss -X PUT 'https://mscr-test.2.rahtiapp.fi/datamodel-api/v2/crosswalkFull' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: Bearer '$BT --form metadata="{ \"status\": \"DRAFT\", \"state\": \"DRAFT\", \"visibility\": \"PUBLIC\", \"versionLabel\": \"1\", \"label\": { \"en\": \"$NAME\" }, \"description\": { \"en\": \"string\" } , \"languages\": [\"en\"], \"format\": \"$FORMAT\" }" --form $SOURCEEXP | jq -r '[.title, .status, .error, .detail, .pid]|@tsv'
+
