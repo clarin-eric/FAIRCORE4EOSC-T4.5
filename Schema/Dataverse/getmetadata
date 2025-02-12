@@ -1,0 +1,7 @@
+#!/bin/sh
+export SERVER_URL=https://demo.dataverse.org
+export PERSISTENT_IDENTIFIER=doi:10.5072/FK2/J8SJZB
+export METADATA_FORMAT=ddi
+
+curl "$SERVER_URL/api/datasets/export?exporter=$METADATA_FORMAT&persistentId=$PERSISTENT_IDENTIFIER"
+
