@@ -37,6 +37,9 @@ Dataverse JSONSCHEMA  ../Schema/Dataverse/demo-10.5072-FK2-PPORT-generated-schem
 #Oxygenproblem LR-Switchboard JSONSCHEMA https://raw.githubusercontent.com/clarin-eric/switchboard-tool-registry/master/schemas/spec-v2.schema.json
 LR-Switchboard JSONSCHEMA ../Schema/LRSWitchboard/spec-v2.schema.json
 
+#other registries schema
+ROR JSONSCHEMA ../Schema/ror_schema/ror_schema.json 
+RORv2_1 JSONSCHEMA ../Schema/ror_schema/ror_schema_v2_1.json
 
 #MPI crosswalks
 #CMDI2OLAC XSL https://raw.githubusercontent.com/TheLanguageArchive/metadata_xslts/main/cmd2dc-olac/cmd2olac.xsl
