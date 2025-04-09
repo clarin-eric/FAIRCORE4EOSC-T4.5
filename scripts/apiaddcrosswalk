@@ -1,8 +1,12 @@
 #!/bin/sh
-echo $1 $2
+echo $1 $2 $3 $4 $5
 NAME=$1
 FORMAT="XSLT"
 FILE=$3
+#SOURCESCHEMA=$4
+#TARGETSCHEMA=$5
+SOURCESCHEMA="mscr:schema:31f7f5d4-9a81-4aed-ab7a-ae1dfd22378a"
+TARGETSCHEMA="mscr:schema:31f7f5d4-9a81-4aed-ab7a-ae1dfd22378a"
 if [ -r "$FILE" ]
 then SOURCEEXP="file=@$FILE"
 elif [ `echo $FILE | grep '^http'` ]
@@ -14,6 +18,11 @@ fi
 #BT=`cat token.txt`
 BT=`cat token2.txt`
 
-#curl -Ss -X PUT 'https://mscr-test.2.rahtiapp.fi/datamodel-api/v2/crosswalkFull' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: Bearer '$BT --form metadata="{ \"status\": \"DRAFT\", \"state\": \"DRAFT\", \"visibility\": \"PUBLIC\", \"namespace\": \"http://test.com\", \"versionLabel\": \"1\", \"label\": { \"en\": \"$NAME\" }, \"description\": { \"en\": \"string\" } , \"languages\": [\"en\"], \"format\": \"$FORMAT\" }" --form $SOURCEEXP 
-curl -Ss -X PUT 'https://mscr-test.2.rahtiapp.fi/datamodel-api/v2/crosswalkFull' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: Bearer '$BT --form metadata="{ \"status\": \"DRAFT\", \"state\": \"DRAFT\", \"visibility\": \"PUBLIC\", \"versionLabel\": \"1\", \"label\": { \"en\": \"$NAME\" }, \"description\": { \"en\": \"string\" } , \"languages\": [\"en\"], \"format\": \"$FORMAT\" }" --form $SOURCEEXP | jq -r '[.title, .status, .error, .detail, .pid]|@tsv'
+
+
+#curl -Ss -X PUT 'https://mscr-test.2.rahtiapp.fi/datamodel-api/v2/crosswalkFull' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: Bearer '$BT --form metadata="{ \"status\": \"DRAFT\", \"state\": \"DRAFT\", \"visibility\": \"PUBLIC\", \"versionLabel\": \"1\", \"label\": { \"en\": \"$NAME\" }, \"description\": { \"en\": \"string\" } , \"languages\": [\"en\"], \"format\": \"$FORMAT\", \"sourceSchema\": \"$SOURCESCHEMA\", \"targetSchema\": \"$TARGETSCHEMA\" }" --form $SOURCEEXP | jq -r '[.title, .status, .error, .detail, .pid]|@tsv'
+
+curl -Ss -X PUT 'https://mscr-test.2.rahtiapp.fi/datamodel-api/v2/crosswalkFull' --header 'Accept: */*' --header 'User-Agent: Thunder Client (https://www.thunderclient.com)' --header 'Authorization: Bearer '$BT --form metadata="{ \"status\": \"DRAFT\", \"state\": \"DRAFT\", \"visibility\": \"PUBLIC\", \"versionLabel\": \"1\", \"label\": { \"en\": \"$NAME\" }, \"description\": { \"en\": \"string\" } , \"languages\": [\"en\"], \"format\": \"$FORMAT\", \"sourceSchema\": \"$SOURCESCHEMA\", \"targetSchema\": \"$TARGETSCHEMA\" }" --form $SOURCEEXP | jq -r '[.title, .status, .error, .detail, .pid]|@tsv'
+
+
 
