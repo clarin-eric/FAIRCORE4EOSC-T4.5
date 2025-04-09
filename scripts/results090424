@@ -1,0 +1,50 @@
+ABCD, XSD, https://abcd.tdwg.org/xml/ABCD_3.0.xsd --> 	DRAFT			mscr:schema:b7e8fe5f-0286-4550-97a6-28788c7de0ae
+ABCD-Zoology, XSD, https://abcd.tdwg.org/xml/ABCD_3.0_zoology.xsd --> 	DRAFT			mscr:schema:01dfc1c0-e416-4035-b894-6fd0af3c9747
+BIDS2, JSONSCHEMA, https://raw.githubusercontent.com/bids-standard/bids-stats-model-schema/master/schema.json --> 	DRAFT			mscr:schema:79227ac4-4daa-430e-8606-7c78bdcde2ff
+CMDI, XSD, https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1404130561238/xsd --> 	DRAFT			mscr:schema:b171f49f-ca41-4043-aaf8-b8dc25c4989a
+DDI-2-1, XSD, https://ddialliance.org/Specification/DDI-Codebook/2.1/XMLSchema/Version2-1.xsd --> 	DRAFT			mscr:schema:2fbce53d-a163-4b33-9381-1cba1a6883cc
+DDI-2.5, XSD, https://ddialliance.org/Specification/DDI-Codebook/2.5/XMLSchema/codebook.xsd --> 	DRAFT			mscr:schema:88206523-f2ee-4184-ab86-23e5887fe220
+GBIF, XSD, http://rs.gbif.org/schema/eml-gbif-profile/1.1/eml-gbif-profile.xsd --> 	DRAFT			mscr:schema:8a50bd2b-a1d4-4f2d-b4cf-1a90414dab1b
+MARC, XSD, https://www.loc.gov/standards/marcxml/schema/MARC21slim.xsd --> 	DRAFT			mscr:schema:1f7e884b-758f-47e0-b3f0-c4cbbcc43dc4
+MODS, XSD, http://www.loc.gov/standards/mods/v3/mods-3-7.xsd --> 	DRAFT			mscr:schema:59d17e11-3f97-43f2-8d61-df4236d59e04
+MODS2DC XSL http://www.loc.gov/standards/mods/v3/DC_MODS3-5_XSLT2-0.xsl
+	DRAFT			mscr:crosswalk:dcc1cc1b-f79c-401d-b13c-120a9de08293
+MODS2MARC XSL http://www.loc.gov/standards/mods/v3/MODS3-5_DC_XSLT2-0.xsl
+	DRAFT			mscr:crosswalk:f66eec10-e0c4-46d0-99a4-00c9ad9e0375
+TEI-ALL, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_all.xsd --> 	500	Internal Server Error		
+TEI-CORPUS, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_corpus.xsd --> 	DRAFT			mscr:schema:927fcbc9-1aa5-49a4-a453-695fb9af58d3
+TEI-LITE, XSD, https://tei-c.org/release/xml/tei/custom/schema/xsd/tei_lite.xsd --> 	DRAFT			mscr:schema:8557bc67-ace8-4d9d-86ce-583fc2f619fb
+No input found: XSD
+DCTERMS, XSD, https://www.dublincore.org/schemas/xmls/qdc/dcterms.xsd --> 	DRAFT			mscr:schema:07f7c6ba-a8fb-4be5-acf3-64f244e9c74e
+IMDI2-1.1, XSD, ../Schema/IMDIandCMDI/IMDI2-1.1.xsd --> Bad Request	400		500 INTERNAL_SERVER_ERROR "Error occured while ingesting file based schema description.Could not transform schema file.xsd:complexType element: The simpleContent element and the mixed attribute are not allowed at the same time."	
+LinguisticFieldtrip, XSD, ../Schema/IMDIandCMDI/LinguisticFieldtrip.xsd --> 	DRAFT			mscr:schema:2c8e6a85-4f15-4377-bf19-3bdc94fa6f02
+NaLiDa-SpeechCorpus, XSD, https://catalog.clarin.eu/ds/ComponentRegistry/rest/registry/1.x/profiles/clarin.eu:cr1:p_1527668176128/xsd --> 	DRAFT			mscr:schema:76a1bade-8b55-4e35-ab8f-8bc06424c40d
+Yoda, JSONSCHEMA, https://yoda.uu.nl/schemas/default-0/metadata.json --> 	DRAFT			mscr:schema:a49d1eb9-dfea-480d-9738-29dacb245e66
+Dataverse, JSONSCHEMA, ../Schema/Dataverse/demo-10.5072-FK2-PPORT-generated-schema.json --> 	DRAFT			mscr:schema:5e115af9-1f62-4bf5-87de-a83cfb377811
+LR-Switchboard, JSONSCHEMA, ../Schema/LRSWitchboard/spec-v2.schema.json --> Bad Request	400		500 INTERNAL_SERVER_ERROR "Error occured while ingesting file based schema description. null"	
+ROR, JSONSCHEMA, ../Schema/ror_schema/ror_schema.json --> 	DRAFT			mscr:schema:23c9485c-2035-43fa-8938-da77b4f78946
+ROR_v2_1, JSONSCHEMA, ../Schema/ror_schema/ror_schema_v2_1.json --> 	DRAFT			mscr:schema:35d0c27d-4065-46d1-b0a5-fe1bd781e7c8
+CMDI2OLAC XSL ../Schema/MPI-crosswalks/cmd2olac.xsl
+	DRAFT			mscr:crosswalk:f5065fbd-216e-461d-854d-2204dee69e70
+CMDI2DC XSL ../Schema/MPI-crosswalks/cmd2dc.xsl
+	DRAFT			mscr:crosswalk:84cd9360-e410-4c6d-b64f-74eb1198247d
+DIM2DataCite XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/DIM2DataCite.xsl
+	DRAFT			mscr:crosswalk:9d62307e-c0fb-44c9-9020-69c03dafe842
+DIM2EZID XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/DIM2EZID.xsl
+	DRAFT			mscr:crosswalk:c8ee7117-b387-401b-9bc5-189b74adb170
+DIM2MARC21slim XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/DIM2MARC21slim.xsl
+	DRAFT			mscr:crosswalk:337eda1f-559e-46ac-9b90-e80444f09499
+MODS-submission XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/mods-submission.xsl
+	DRAFT			mscr:crosswalk:f35365c3-4a9b-40a8-b177-889ed4824daa
+DIM2DC-example XSL https://raw.githubusercontent.com/ufal/clarin-dspace/clarin/dspace/config/crosswalks/sample-crosswalk-DIM2DC.xsl
+	DRAFT			mscr:crosswalk:d1ff4c9f-fc64-4688-97b6-f90d8f39d9ba
+DIM2DataCite XSL ../Schema/UFAL-crosswalks/DIM2DataCite.xsl
+	DRAFT			mscr:crosswalk:aa3d6ce5-f3a0-4a01-8ea0-852ea87f02eb
+DIM2EZID XSL ../Schema/UFAL-crosswalks/DIM2EZID.xsl
+	DRAFT			mscr:crosswalk:c90f300f-4120-4495-a667-599bfedff99d
+DIM2MARC21slim XSL ../Schema/UFAL-crosswalks/DIM2MARC21slim.xsl
+	DRAFT			mscr:crosswalk:791a6bf0-f70d-47fd-809c-0b7a8d2c269a
+MODS-submission XSL ../Schema/UFAL-crosswalks/modssubmission.xsl
+	DRAFT			mscr:crosswalk:04084575-e3bd-4364-8bcd-f66595a87dbd
+DIM2DC-example XSL ../Schema/UFAL-crosswalks/sample-crosswalk-DIM2DC.xsl
+	DRAFT			mscr:crosswalk:debf5213-2370-43f5-a3da-2c07d3c2dde7
